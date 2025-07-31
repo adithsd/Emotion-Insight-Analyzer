@@ -34,11 +34,11 @@ A simple and intuitive \*\*Flask-based web application\*\* that detects emotions
 
 
 
-> \_(Add `static/demo.png` or a GIF here)\_
+> \_(Add `static/emotiondetector.png` or a GIF here)\_
 
 ```html
 
-!\[App Screenshot](static/demo.png)
+!\[App Screenshot](static/emotiondetector.png)
 
 
 

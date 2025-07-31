@@ -10,7 +10,7 @@ A simple and intuitive \*\*Flask-based web application\*\* that detects emotions
 
 
 
-\## 🚀 Features
+\# 🚀 Features
 
 
 
@@ -30,15 +30,9 @@ A simple and intuitive \*\*Flask-based web application\*\* that detects emotions
 
 
 
-\## 📸 Screenshot
+\# 📸 Screenshot
 
 
-
-> \_(Add `static/emotiondetector.png` or a GIF here)\_
-
-```html
-
-!\[App Screenshot](static/emotiondetector.png)
-
+![App Screenshot](static/emotiondetector.png)
 
 

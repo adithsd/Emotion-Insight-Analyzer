@@ -83,6 +83,7 @@
       localStorage.setItem('mode', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
     }
 
+
     // Auto-apply theme on load
     window.onload = () => {
       if (localStorage.getItem('mode') === 'dark') {

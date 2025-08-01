@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Filtered Emotion Logs</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #121212;
+      --text: #fff;
+      --table-bg: #1e1e1e;
+      --table-head: #333;
+      --accent: #00bcd4;
+    }
+    body.light-mode {
+      --bg: #ffffff;
+      --text: #000000;
+      --table-bg: #f8f9fa;
+      --table-head: #e0e0e0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+    }
+    .table {
+      background-color: var(--table-bg);
+      color: var(--text);
+    }
+    .table thead {
+      background-color: var(--table-head);
+      color: var(--accent);
+    }
+    .btn-download {
+      background-color: var(--accent);
+      border: none;
+    }
+    .btn-download:hover {
+      background-color: #0097a7;
+    }
+    .form-select, .form-control {
+      background-color: var(--table-bg);
+      color: var(--text);
+      border: 1px solid #666;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-info">⬇️ Export Emotion Logs</h2>
+    <button class="btn btn-sm btn-outline-light" onclick="toggleTheme()">🌓 Toggle Dark Mode</button>
+  </div>
+
+  <!-- Filter Form -->
+  <form method="get" class="mb-4">
+    <div class="row g-3">
+      <div class="col-md-3">
+        <label for="start" class="form-label">Start Date</label>
+        <input type="date" class="form-control" name="start" id="start" value="{{ start_date }}">
+      </div>
+      <div class="col-md-3">
+        <label for="end" class="form-label">End Date</label>
+        <input type="date" class="form-control" name="end" id="end" value="{{ end_date }}">
+      </div>
+      <div class="col-md-4">
+        <label for="emotion" class="form-label">Select Emotions</label>
+        <select class="form-select" name="emotion" multiple>
+          {% for emotion in ['joy', 'anger', 'sadness', 'fear', 'disgust', 'surprise', 'neutral'] %}
+            <option value="{{ emotion }}" {% if emotion in selected_emotions %}selected{% endif %}>
+              {{ emotion.capitalize() }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-2 d-flex align-items-end">
+        <button type="submit" class="btn btn-outline-info w-100">Apply Filters</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Download Link with Filters -->
+  <a href="{{ url_for('download_csv', start=start_date, end=end_date, **{'emotion': selected_emotions}) }}"
+     class="btn btn-download mb-4">📥 Download CSV</a>
+
+  <a href="{{ url_for('download_xlsx', start=start_date, end=end_date, **{'emotion': selected_emotions}) }}"
+   class="btn btn-outline-success mb-4 ms-2">📊 Download Excel (.xlsx)</a>
+
+
+
+
+  <!-- Preview Table -->
+  {% if entries %}
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Input</th>
+          <th>Detected Emotion</th>
+          <th>Timestamp</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entry in entries %}
+          <tr>
+            <td>{{ entry.id }}</td>
+            <td>{{ entry.input_text }}</td>
+            <td>{{ entry.detected_emotion }}</td>
+            <td>{{ entry.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="alert alert-warning">No entries found with the selected filters.</div>
+  {% endif %}
+</div>
+
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle("light-mode");
+  }
+    // Smoothly toggle theme with fade animation
+  function toggleTheme() {
+    const body = document.body;
+    body.style.transition = 'background-color 0.4s, color 0.4s';
+    body.classList.toggle("light-mode");
+  }
+</script>
+</body>
+</html>

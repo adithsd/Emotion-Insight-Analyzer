@@ -14,16 +14,14 @@ A simple and intuitive \*\*Flask-based web application\*\* that detects emotions
 
 
 
-\- 🔍 Uses \[j-hartmann/emotion-english-distilroberta-base](https://huggingface.co/j-hartmann/emotion-english-distilroberta-base) from Hugging Face
-
-\- 🌐 Clean Bootstrap UI with responsive layout
-
-\- 🌗 Dark Mode toggle support
-
-\- 💡 Real-time emotion detection from natural language input
-
-\- ⚡ Fast and lightweight — easy to run locally
-
+- 🤖 Uses [j-hartmann/emotion-english-distilroberta-base](https://huggingface.co/j-hartmann/emotion-english-distilroberta-base) for emotion classification
+- 📈 Real-time emotion logging and analytics dashboard
+- 📊 Dynamic charts using Plotly (bar & line graphs)
+- 🌐 Clean and responsive Bootstrap UI
+- 🌗 Dark Mode support with toggle and animation
+- 🧠 Dashboard with critical emotion insights
+- 📤 Export emotion logs to **CSV** or **XLSX**
+- 🎯 Filter logs by **date range** or **emotion categories** before export
 
 
 ---

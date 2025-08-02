@@ -26,6 +26,26 @@ A simple and intuitive \*\*Flask-based web application\*\* that detects emotions
 
 ---
 
+💡 Use Cases
+🧾 Customer feedback analysis
+
+🎓 Sentiment/emotion tracking in learning apps
+
+🗣️ Emotional pattern monitoring over time
+
+📊 Internal analytics for NLP applications
+
+🛠️ Tech Stack
+Frontend: HTML, Bootstrap 5, Plotly.js
+
+Backend: Flask
+
+NLP Model: Hugging Face Transformers
+
+Database: SQLite + SQLAlchemy
+
+Export: CSV, XLSX via openpyxl
+
 
 
 \# 📸 Screenshot
